@@ -1,9 +1,5 @@
 # home/cirno/home.nix
-{ pkgs, zen-browser, ... }:
-let
-  starshipConfigFile = builtins.readFile ./starship.toml;
-  starshipConfig = builtins.fromTOML starshipConfigFile;
-in {
+{ pkgs, zen-browser, ... }: {
   imports = [
     zen-browser.homeModules.beta
   ];
@@ -45,18 +41,15 @@ in {
   };
 
   programs.starship = {
+    enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
-    settings = starshipConfig;
   };
+  xdg.configFile."starship.toml".source = ./starship.toml;
 
   home.sessionVariables = {
-    WINEDLLOVERRIDES = "winemenubuilder.exe=d";
-    WINEWAYLAND_DISABLE_XWAYLAND = "1";
-    WINE_VK_VULKAN_ONLY = "1";
-    DXVK_ENABLE_NVAPI = "0";
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+
   };
 
 
