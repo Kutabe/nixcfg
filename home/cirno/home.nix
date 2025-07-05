@@ -16,6 +16,9 @@
     gosec
     gotests
 
+    # GIT
+    git-credential-manager
+
     # Nix
     nil # lsp
     alejandra # code fmt
