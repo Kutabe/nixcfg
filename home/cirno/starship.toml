@@ -1,0 +1,125 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+palette = "cotton_candy"
+
+add_newline = false
+
+format = """
+[╭─\\(](basalt)$username@$hostname[\\)─\\($directory$git_branch$git_status\\)](basalt)
+[╰─](basalt)$character"""
+right_format = """\
+$cmd_duration\
+$status\
+$sudo\
+$git_metrics\
+"""
+
+[character]
+success_symbol = '[❯](sky)'
+error_symbol = '[❯](pink)'
+
+[username]
+style_user = 'fg:sky'
+style_root = 'fg:pink'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style)'
+style = 'fg:sky'
+truncation_length = 3
+truncation_symbol = '󰇘/'
+read_only = ' '
+read_only_style = 'fg:pink'
+home_symbol = ''
+
+[hostname]
+ssh_symbol = ' '
+ssh_only = false
+format = '[$hostname]($style)'
+style = 'fg:petal'
+
+[cmd_duration]
+min_time = 1000
+format = '[󰥔 $duration]($style)'
+style = 'fg:basalt'
+
+[sudo]
+format = '[$symbol]($style)'
+symbol = ' '
+style = 'fg:basalt'
+disabled = false
+
+[time]
+format = '[$time]($style)'
+use_12hr = true
+time_format = '[%a %d %I:%M%p]'
+disabled = false
+style = 'fg:basalt'
+
+[status]
+format = ' [$symbol$status]($style)'
+symbol = ''
+map_symbol = true
+not_executable_symbol = ''
+not_found_symbol = '? '
+sigint_symbol = ' '
+signal_symbol = ''
+style = 'fg:pink'
+pipestatus = true
+pipestatus_separator = '[❯](basalt)'
+pipestatus_format = '[\[$pipestatus\] ](basalt) [$symbol$common_meaning$signal_name$maybe_int]($style)'
+disabled = false
+
+[git_branch]
+format = ' [$symbol](white)[$branch(:$remote_branch)]($style)'
+style = 'fg:petal'
+
+[git_metrics]
+format = ' [(\[[+$added]($added_style))([-$deleted]($deleted_style))\]](basalt)'
+added_style = 'fg:sky'
+deleted_style = 'fg:pink'
+disabled = false
+
+[git_status]
+# 󰘕 conflict
+# 󰘖 diverged
+# 󰁅 behind
+# 󰁝 ahead
+# 󰵉
+# 󰐕 staged
+# 󰯆 deleted
+# 󱣲 renamed
+# 󰅎 stashed
+# 󰸞 up_to_date
+format = '([ $all_status$ahead_behind]($style))'
+style = 'fg:pink'
+conflicted = '󰘕'
+ahead = '󰁝'
+behind = '󰁅'
+diverged = '󰘖'
+up_to_date = '󰸞'
+untracked = '?'
+stashed = '󰅎'
+modified = '󰛄'
+staged = '󰐕'
+renamed = '󱣲'
+deleted = '󰯆'
+use_git_executable = false
+
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[palettes.cotton_candy]
+pink = "#FF90BB"
+petal = "#FFC1DA"
+offwhite = "#F8F8E1"
+sky = "#8ACCD5"
+basalt = "#696B6B"
+#raspberry = "#D81E5B"
+#terracotta = "#F0544F"
+
+
